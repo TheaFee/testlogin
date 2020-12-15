@@ -1,0 +1,26 @@
+<html>
+    <body>
+
+    <h1> Hallo User!</h1> <h2>Hier kannst du dich einloggen</h2>
+
+    <form action ="index.php?_url=Login/login" method="post"> <!--inc/login.php -->
+       <p> Benutzername: <input type="text" name="username" value="<?=$username?>"></p>
+
+        <p>Passwort: <input type="password" name="password" value="<?=$password?>"></p>
+        <p><input type="submit" value="bestätigen"></p>
+    </form>
+
+   <div style="color: red;">
+
+<?php
+
+if (isset($_GET['_login'])) {
+    echo "Sorry, nochmal!";
+}
+
+?>
+</div>
+    <p> Du möchtest ein neues Konto anlegen? klicke 
+    <a href="index.php?_url=Registration/registration" name="registrierungsformular">hier</a></p>
+    </body>
+</html>

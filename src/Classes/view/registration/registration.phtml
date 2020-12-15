@@ -1,0 +1,54 @@
+
+<html>
+    <body>
+    <h1>Hier kannst du dir ein neues Konto anlegen</h1>
+        <form novalidate action="index.php?_url=Registration/registration" method="post">
+        <p>Vorname: <input type="text" name="firstName" value="<?=isset($submit) ? $firstName :"";?>" required></p>
+        <p>Name: <input type="text" name="name" value="<?=isset($submit) ? $name : "";?>" required></p>
+        <p>Benutzername: <input type="text" name="username" value="<?=isset($submit) ? $username : "";?>"required></p>
+        <p>Passwort: <input type="password" name="password" value=""required></p>
+        <br>
+        <p>Geburtsdatum:<input type="date" name="birthdate" value="<?=isset($submit) ? $birthdate: ""?>"required></p>
+        <p>E-mail-Adresse: <input type="text" name="emailAdress" value="<?=isset($submit) ? $emailAdress : "";?>"required></p>
+        <input type="submit" value="bestätigen">
+        <input type="hidden" name="submit" value="true">
+        </form>
+
+<div style="color: red;">   
+
+<?php
+
+if (isset($submit) && empty($emailAdress)) {
+    //var_dump(empty($emailAdress));
+    echo "E-Mail-Adresse ist nicht korrekt!\n";
+} 
+
+if (isset($submit) && (empty($name) || empty($firstName))) {
+    echo "Bitte einen Namen eintragen.";
+}
+
+if (isset($submit) && empty($username)) {
+    echo "Der Benutzername ist schon vergeben. Bitte suche dir einen Neuen aus!";
+}
+
+
+if (isset($submit) && empty($password)) {
+    echo "Passwort nicht stark genug, bitte probier es noch einmal. Das Passwort muss \n
+        wenigstens 8 Zeichen lang sein, \n
+        Sonderzeichen enthalten,\n
+        Groß- und Kleinbuchstaben nutzen,\n
+        Zahlen und Buchstaben beinhalten.\n";
+}
+
+if (isset($submit) && empty($birthdate)) {
+    //echo $submit;
+    echo $birthdate;
+    echo "Datum ist nicht glaubwürdig!";
+}
+?>
+</div>
+
+
+
+    </body>
+</html>    
